@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Clube do Termux — Aprenda Termux, Linux, Automação e Inteligência Artificial diretamente pelo celular. Tutoriais gratuitos toda semana." />
+  <meta name="keywords" content="Termux, Linux, Android, Kali Linux, Python, Bash, automação, IA, tutoriais" />
+  <meta name="author" content="Clube do Termux" />
+  <meta property="og:title" content="Clube do Termux" />
+  <meta property="og:description" content="Aprenda Termux, Linux, Automação e IA diretamente pelo celular." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#00ff88" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Clube do Termux — Aprenda tecnologia pelo celular</title>
+</head>
+<body>
+
+  <!-- ====== HEADER / NAV ====== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Clube do Termux">
+        <svg class="logo__icon" viewBox="0 0 40 40" width="40" height="40" fill="none">
+          <rect x="2" y="2" width="36" height="36" rx="4" stroke="currentColor" stroke-width="3" />
+          <path d="M12 28L20 12L28 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M15 22H25" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span class="logo__text">Clube do Termux</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#aprender" class="nav__link">Aprender</a></li>
+          <li><a href="#tutoriais" class="nav__link">Tutoriais</a></li>
+          <li><a href="#beneficios" class="nav__link">Benefícios</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+      <div class="hero__logo reveal">
+        <svg class="hero__logo-icon" viewBox="0 0 80 80" width="80" height="80" fill="none">
+          <rect x="4" y="4" width="72" height="72" rx="8" stroke="currentColor" stroke-width="4" />
+          <path d="M24 56L40 24L56 56" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M30 44H50" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h1 class="hero__title reveal">Clube do Termux</h1>
+      <p class="hero__subtitle reveal">
+        «Aprenda Termux, Linux, Automação e Inteligência Artificial diretamente pelo celular.»
+      </p>
+      <div class="hero__buttons reveal">
+        <a href="#" class="btn btn--primary" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Assistir no TikTok
+        </a>
+        <a href="#" class="btn btn--secondary" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+          Entrar no Telegram
+        </a>
+        <a href="#tutoriais" class="btn btn--outline">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          Ver Tutoriais
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TERMINAL ANIMADO ====== -->
+  <section class="terminal-section" id="terminal">
+    <div class="container">
+      <div class="terminal reveal">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__title">termux@clube:~$</span>
+        </div>
+        <div class="terminal__body" id="terminalBody">
+          <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd"></span><span class="terminal__cursor">▊</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== O QUE VOCÊ VAI APRENDER ====== -->
+  <section class="section" id="aprender">
+    <div class="container">
+      <h2 class="section__title reveal">O que você vai aprender</h2>
+      <p class="section__desc reveal">Domine ferramentas poderosas direto do seu celular</p>
+      <div class="grid" id="skillsGrid">
+        <!-- preenchido por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ÚLTIMOS TUTORIAIS ====== -->
+  <section class="section section--dark" id="tutoriais">
+    <div class="container">
+      <h2 class="section__title reveal">Últimos Tutoriais</h2>
+      <p class="section__desc reveal">Conteúdo novo toda semana para você aprender</p>
+      <div class="tutorials" id="tutorialsGrid">
+        <!-- preenchido por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ESTATÍSTICAS ====== -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <span class="stat__number" data-target="150">0</span>
+          <span class="stat__suffix">+</span>
+          <span class="stat__label">vídeos</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="20">0</span>
+          <span class="stat__suffix">mil+</span>
+          <span class="stat__label">seguidores</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="500">0</span>
+          <span class="stat__suffix">mil+</span>
+          <span class="stat__label">visualizações</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="50">0</span>
+          <span class="stat__suffix">+</span>
+          <span class="stat__label">tutoriais</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== BENEFÍCIOS ====== -->
+  <section class="section" id="beneficios">
+    <div class="container">
+      <h2 class="section__title reveal">Por que aprender no Clube do Termux?</h2>
+      <p class="section__desc reveal">Tudo que você precisa para evoluir na tecnologia</p>
+      <div class="benefits" id="benefitsGrid">
+        <!-- preenchido por JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="cta">
+    <div class="container cta__inner reveal">
+      <h2 class="cta__title">Pronto para dominar o Termux?</h2>
+      <p class="cta__text">Junte-se a milhares de alunos e transforme seu celular em uma máquina de aprendizado.</p>
+      <a href="#" class="btn btn--primary btn--large">Começar Agora</a>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="logo">
+          <svg class="logo__icon" viewBox="0 0 40 40" width="32" height="32" fill="none">
+            <rect x="2" y="2" width="36" height="36" rx="4" stroke="currentColor" stroke-width="3" />
+            <path d="M12 28L20 12L28 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15 22H25" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <span class="logo__text">Clube do Termux</span>
+        </a>
+        <p class="footer__copy">&copy; Clube do Termux &mdash; Aprenda tecnologia pelo celular.</p>
+      </div>
+      <div class="footer__social">
+        <a href="#" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Telegram" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://github.com/carlos46743/clube-do-termux" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
