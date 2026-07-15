@@ -188,8 +188,12 @@ install_xfce() {
 # Função para instalar OpenClaude
 install_openclaude() {
     echo -e "${YELLOW}🤖 Instalando OpenClaude...${NC}"
-    npm install -g openclaude
+    echo -e "${YELLOW}[*] Instalando dependencias (Node.js)...${NC}"
+    pkg install -y nodejs-lts
+    echo -e "${YELLOW}[*] Instalando OpenClaude...${NC}"
+    npm install -g @gitlawb/openclaude@latest
     echo -e "${GREEN}✅ OpenClaude instalado! Use: openclaude${NC}"
+    echo -e "${YELLOW}⚠️  Recomendado: execute 'openclaude' e configure o provider com /provider${NC}"
     log "OpenClaude instalado"
     sleep 2
 }
@@ -208,8 +212,23 @@ install_gemini() {
 # Função para instalar Hermes Agent
 install_hermes() {
     echo -e "${YELLOW}🤖 Instalando Hermes Agent...${NC}"
-    pip install hermes-agent
-    echo -e "${GREEN}✅ Hermes Agent instalado!${NC}"
+    echo -e "${YELLOW}[*] Instalando dependencias (Python, Rust, etc)...${NC}"
+    pkg install -y git python clang rust make pkg-config libffi openssl nodejs ripgrep ffmpeg
+    echo -e "${YELLOW}[*] Clonando repositorio...${NC}"
+    cd "$HOME" || return
+    git clone https://github.com/NousResearch/hermes-agent.git 2>/dev/null || {
+        cd hermes-agent && git pull
+    }
+    cd hermes-agent || return
+    echo -e "${YELLOW}[*] Criando ambiente virtual e instalando...${NC}"
+    python -m venv venv
+    source venv/bin/activate
+    export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
+    python -m pip install --upgrade pip setuptools wheel
+    python -m pip install -e '.[termux]' -c constraints-termux.txt
+    ln -sf "$PWD/venv/bin/hermes" "$PREFIX/bin/hermes"
+    echo -e "${GREEN}✅ Hermes Agent instalado! Use: hermes${NC}"
+    echo -e "${YELLOW}⚠️  Configure o modelo com: hermes model${NC}"
     log "Hermes Agent instalado"
     sleep 2
 }
