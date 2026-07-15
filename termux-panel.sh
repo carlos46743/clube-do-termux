@@ -77,22 +77,23 @@ show_menu() {
     echo -e " ${YELLOW}[10]${NC} Instalar OpenClaude"
     echo -e " ${YELLOW}[11]${NC} Instalar Gemini CLI"
     echo -e " ${YELLOW}[12]${NC} Instalar Hermes Agent"
+    echo -e " ${YELLOW}[13]${NC} 🦙 Instalar Ollama"
     
     echo -e "\n${GREEN}━━━━━━━━━━ 🔐 GIT/SSH ━━━━━━━━━━━${NC}"
-    echo -e " ${YELLOW}[13]${NC} GitHub Login (gh) $(check_installed gh)"
-    echo -e " ${YELLOW}[14]${NC} Gerar chave SSH"
-    echo -e " ${YELLOW}[15]${NC} Clonar repositório Git"
+    echo -e " ${YELLOW}[14]${NC} GitHub Login (gh) $(check_installed gh)"
+    echo -e " ${YELLOW}[15]${NC} Gerar chave SSH"
+    echo -e " ${YELLOW}[16]${NC} Clonar repositório Git"
     
     echo -e "\n${GREEN}━━━━━━━━━━ 🛠️ UTILITÁRIOS ━━━━━━━━━━━${NC}"
-    echo -e " ${YELLOW}[16]${NC} Backup do Termux"
-    echo -e " ${YELLOW}[17]${NC} Informações do sistema"
-    echo -e " ${YELLOW}[18]${NC} Teste de velocidade da internet"
-    echo -e " ${YELLOW}[19]${NC} Scanner de portas da rede local"
-    echo -e " ${YELLOW}[20]${NC} Gerenciador de projetos"
-    echo -e " ${YELLOW}[21]${NC} Personalizar Termux"
-    echo -e " ${YELLOW}[22]${NC} Atualizar todos os projetos"
-    echo -e " ${YELLOW}[23]${NC} 📊 Status do sistema"
-    echo -e " ${YELLOW}[24]${NC} 🧹 Limpar cache"
+    echo -e " ${YELLOW}[17]${NC} Backup do Termux"
+    echo -e " ${YELLOW}[18]${NC} Informações do sistema"
+    echo -e " ${YELLOW}[19]${NC} Teste de velocidade da internet"
+    echo -e " ${YELLOW}[20]${NC} Scanner de portas da rede local"
+    echo -e " ${YELLOW}[21]${NC} Gerenciador de projetos"
+    echo -e " ${YELLOW}[22]${NC} Personalizar Termux"
+    echo -e " ${YELLOW}[23]${NC} Atualizar todos os projetos"
+    echo -e " ${YELLOW}[24]${NC} 📊 Status do sistema"
+    echo -e " ${YELLOW}[25]${NC} 🧹 Limpar cache"
     
     echo -e "\n${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo -e " ${RED}[0]${NC} Sair"
@@ -187,13 +188,36 @@ install_xfce() {
 
 # Função para instalar OpenClaude
 install_openclaude() {
-    echo -e "${YELLOW}🤖 Instalando OpenClaude...${NC}"
-    echo -e "${YELLOW}[*] Instalando dependencias (Node.js)...${NC}"
-    pkg install -y nodejs-lts
-    echo -e "${YELLOW}[*] Instalando OpenClaude...${NC}"
-    npm install -g @gitlawb/openclaude@latest
-    echo -e "${GREEN}✅ OpenClaude instalado! Use: openclaude${NC}"
-    echo -e "${YELLOW}⚠️  Recomendado: execute 'openclaude' e configure o provider com /provider${NC}"
+    echo -e "${YELLOW}🤖 Instalando OpenClaude com controle Android...${NC}"
+    echo -e "${YELLOW}[*] Configurando armazenamento e mirrors...${NC}"
+    termux-setup-storage 2>/dev/null
+    sleep 3
+    sed -i 's|^\(deb.*\)://[^ ]*/termux-main|\1://packages.termux.dev/apt/termux-main|' "$PREFIX/etc/apt/sources.list" 2>/dev/null
+    echo -e "${YELLOW}[*] Instalando dependencias do sistema...${NC}"
+    pkg update -y
+    pkg install -y curl nodejs git proot termux-api
+    pkg reinstall -y libngtcp2 openssl curl
+    echo -e "${YELLOW}[*] Baixando scripts de instalacao...${NC}"
+    mkdir -p ~/scripts
+    curl -sL https://raw.githubusercontent.com/jarvesusaram99/open-claude-code-termux/main/termux_setup.sh -o ~/termux_setup.sh
+    curl -sL https://raw.githubusercontent.com/jarvesusaram99/open-claude-code-termux/main/scripts/mobile_tools.sh -o ~/scripts/mobile_tools.sh --create-dirs
+    curl -sL https://raw.githubusercontent.com/jarvesusaram99/open-claude-code-termux/main/scripts/setup_shizuku.sh -o ~/setup_shizuku.sh
+    chmod +x ~/scripts/mobile_tools.sh ~/setup_shizuku.sh
+    echo -e "${YELLOW}[*] Configurando Shizuku...${NC}"
+    bash ~/setup_shizuku.sh
+    echo -e "${YELLOW}[*] Configurando Node.js e instalando OpenClaude...${NC}"
+    echo "export NODE_OPTIONS=--dns-result-order=ipv4first" >> ~/.bashrc
+    export NODE_OPTIONS=--dns-result-order=ipv4first
+    bash ~/termux_setup.sh
+    echo -e "${GREEN}✅ OpenClaude instalado!${NC}"
+    echo ""
+    echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}claude${NC}              → Modo normal               ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}claude --limitless${NC}  → Modo auto-execucao        ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}claude --continue${NC}   → Continuar sessao          ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}claude --resume <id>${NC}→ Retomar sessao especifica  ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}/provider${NC}            → Configurar provider      ${CYAN}║${NC}"
+    echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
     log "OpenClaude instalado"
     sleep 2
 }
@@ -202,8 +226,18 @@ install_openclaude() {
 # Função para instalar Gemini CLI
 install_gemini() {
     echo -e "${YELLOW}🤖 Instalando Gemini CLI...${NC}"
+    echo -e "${YELLOW}[*] Verificando Node.js...${NC}"
+    pkg install -y nodejs
     npm install -g @google/gemini-cli
-    echo -e "${GREEN}✅ Gemini CLI instalado! Use: gemini${NC}"
+    echo -e "${GREEN}✅ Gemini CLI instalado!${NC}"
+    echo ""
+    echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}gemini${NC}               → Iniciar sessao            ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}gemini -p \"pergunta\"${NC} → Modo direto (script)     ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}gemini -m modelo${NC}     → Usar modelo especifico    ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}/model${NC}               → Trocar de modelo          ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}/help${NC}                → Listar comandos           ${CYAN}║${NC}"
+    echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
     log "Gemini CLI instalado"
     sleep 2
 }
@@ -212,24 +246,65 @@ install_gemini() {
 # Função para instalar Hermes Agent
 install_hermes() {
     echo -e "${YELLOW}🤖 Instalando Hermes Agent...${NC}"
-    echo -e "${YELLOW}[*] Instalando dependencias (Python, Rust, etc)...${NC}"
-    pkg install -y git python clang rust make pkg-config libffi openssl nodejs ripgrep ffmpeg
+    echo -e "${YELLOW}[*] Instalando dependencias...${NC}"
+    pkg update -y
+    pkg install -y git python clang rust make pkg-config libffi openssl nodejs ripgrep ffmpeg binutils termux-api
     echo -e "${YELLOW}[*] Clonando repositorio...${NC}"
     cd "$HOME" || return
-    git clone https://github.com/NousResearch/hermes-agent.git 2>/dev/null || {
-        cd hermes-agent && git pull
-    }
-    cd hermes-agent || return
-    echo -e "${YELLOW}[*] Criando ambiente virtual e instalando...${NC}"
+    if [ -d "hermes-agent" ]; then
+        cd hermes-agent || return
+        git pull
+    else
+        git clone https://github.com/NousResearch/hermes-agent.git
+        cd hermes-agent || return
+    fi
+    echo -e "${YELLOW}[*] Criando ambiente virtual...${NC}"
     python -m venv venv
-    source venv/bin/activate
-    export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk)
-    python -m pip install --upgrade pip setuptools wheel
-    python -m pip install -e '.[termux]' -c constraints-termux.txt
-    ln -sf "$PWD/venv/bin/hermes" "$PREFIX/bin/hermes"
-    echo -e "${GREEN}✅ Hermes Agent instalado! Use: hermes${NC}"
-    echo -e "${YELLOW}⚠️  Configure o modelo com: hermes model${NC}"
+    . venv/bin/activate
+    export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk 2>/dev/null || echo "34")
+    echo -e "${YELLOW}[*] Instalando dependencias Python...${NC}"
+    pip install --upgrade pip setuptools wheel
+    if [ -f "constraints-termux.txt" ]; then
+        pip install -e '.[termux]' -c constraints-termux.txt || pip install -e '.' -c constraints-termux.txt
+    else
+        pip install -e '.[termux]' || pip install -e '.'
+    fi
+    ln -sf "$PWD/venv/bin/hermes" "${PREFIX:-/data/data/com.termux/files/usr}/bin/hermes"
+    deactivate
+    echo -e "${GREEN}✅ Hermes Agent instalado!${NC}"
+    echo ""
+    echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes${NC}               → Iniciar sessao            ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes setup${NC}         → Assistente de configuracao${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes model${NC}         → Escolher provider/modelo  ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes gateway${NC}       → Iniciar gateway mensagens ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes doctor${NC}        → Diagnosticar problemas    ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}hermes update${NC}        → Atualizar Hermes          ${CYAN}║${NC}"
+    echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
     log "Hermes Agent instalado"
+    sleep 2
+}
+
+
+# Função para instalar Ollama
+install_ollama() {
+    echo -e "${YELLOW}🦙 Instalando Ollama...${NC}"
+    echo -e "${YELLOW}[*] Instalando dependencias...${NC}"
+    pkg update -y
+    pkg install -y curl
+    echo -e "${YELLOW}[*] Executando instalador oficial...${NC}"
+    curl -fsSL https://ollama.com/install.sh | sh
+    echo -e "${GREEN}✅ Ollama instalado!${NC}"
+    echo ""
+    echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama serve${NC}          → Iniciar servidor         ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama pull <modelo>${NC}  → Baixar modelo            ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama run <modelo>${NC}   → Executar modelo          ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama list${NC}           → Listar modelos baixados  ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama rm <modelo>${NC}    → Remover modelo           ${CYAN}║${NC}"
+    echo -e "${CYAN}║${NC} ${GREEN}ollama ps${NC}             → Ver modelos em execucao  ${CYAN}║${NC}"
+    echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
+    log "Ollama instalado"
     sleep 2
 }
 
@@ -574,18 +649,19 @@ while true; do
         10) install_openclaude ;;
         11) install_gemini ;;
         12) install_hermes ;;
-        13) github_login ;;
-        14) generate_ssh ;;
-        15) clone_repo ;;
-        16) backup_termux ;;
-        17) system_info ;;
-        18) speed_test ;;
-        19) port_scanner ;;
-        20) project_manager ;;
-        21) customize_termux ;;
-        22) update_all_projects ;;
-        23) system_status ;;
-        24) clean_cache ;;
+        13) install_ollama ;;
+        14) github_login ;;
+        15) generate_ssh ;;
+        16) clone_repo ;;
+        17) backup_termux ;;
+        18) system_info ;;
+        19) speed_test ;;
+        20) port_scanner ;;
+        21) project_manager ;;
+        22) customize_termux ;;
+        23) update_all_projects ;;
+        24) system_status ;;
+        25) clean_cache ;;
         0)
             echo -e "${GREEN}👋 Saindo... Até logo!${NC}"
             log "Sessão encerrada"
