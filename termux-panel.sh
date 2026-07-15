@@ -48,10 +48,10 @@ check_installed() {
 # Função para mostrar cabeçalho
 show_header() {
     clear
-    echo -e "${CYAN}╔══════════════════════════════════════════════════╗${NC}"
-    echo -e "${CYAN}║${NC}${BOLD}${WHITE}      CLUBE DO TERMUX - PAINEL MULTIFUNÇÕES     ${NC}${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC}${YELLOW}            Versão 2.0 - Melhorado!              ${NC}${CYAN}║${NC}"
-    echo -e "${CYAN}╚══════════════════════════════════════════════════╝${NC}"
+    echo -e "${GREEN}╔══════════════════════════════════════════════════╗${NC}"
+    echo -e "${GREEN}║${NC}${BOLD}${GREEN}      CLUBE DO TERMUX - PAINEL MULTIFUNÇÕES     ${NC}${GREEN}║${NC}"
+    echo -e "${GREEN}║${NC}${GREEN}            Versão 2.0 - Melhorado!              ${NC}${GREEN}║${NC}"
+    echo -e "${GREEN}╚══════════════════════════════════════════════════╝${NC}"
     echo ""
     echo -e "${BLUE}📊 Sistema:$(uname -o) | Kernel:$(uname -r)${NC}"
     echo -e "${BLUE}📦 Pacotes instalados:$(pkg list-installed 2>/dev/null | wc -l)${NC}"
