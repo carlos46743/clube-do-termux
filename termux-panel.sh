@@ -246,42 +246,24 @@ install_gemini() {
 # Função para instalar Hermes Agent
 install_hermes() {
     echo -e "${YELLOW}🤖 Instalando Hermes Agent...${NC}"
-    echo -e "${YELLOW}[*] Instalando dependencias...${NC}"
-    pkg update -y
-    pkg install -y git python clang rust make pkg-config libffi openssl nodejs ripgrep ffmpeg binutils termux-api
-    echo -e "${YELLOW}[*] Clonando repositorio...${NC}"
-    cd "$HOME" || return
-    if [ -d "hermes-agent" ]; then
-        cd hermes-agent || return
-        git pull
+    echo -e "${YELLOW}[*] Executando instalador oficial...${NC}"
+    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✅ Hermes Agent instalado!${NC}"
+        echo ""
+        echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes${NC}               → Iniciar sessao            ${CYAN}║${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes setup${NC}         → Assistente de configuracao${CYAN}║${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes model${NC}         → Escolher provider/modelo  ${CYAN}║${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes gateway${NC}       → Iniciar gateway mensagens ${CYAN}║${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes doctor${NC}        → Diagnosticar problemas    ${CYAN}║${NC}"
+        echo -e "${CYAN}║${NC} ${GREEN}hermes update${NC}        → Atualizar Hermes          ${CYAN}║${NC}"
+        echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
+        log "Hermes Agent instalado"
     else
-        git clone https://github.com/NousResearch/hermes-agent.git
-        cd hermes-agent || return
+        echo -e "${RED}❌ Erro ao instalar Hermes Agent${NC}"
+        log "Erro ao instalar Hermes Agent"
     fi
-    echo -e "${YELLOW}[*] Criando ambiente virtual...${NC}"
-    python -m venv venv
-    . venv/bin/activate
-    export ANDROID_API_LEVEL=$(getprop ro.build.version.sdk 2>/dev/null || echo "34")
-    echo -e "${YELLOW}[*] Instalando dependencias Python...${NC}"
-    pip install --upgrade pip setuptools wheel
-    if [ -f "constraints-termux.txt" ]; then
-        pip install -e '.[termux]' -c constraints-termux.txt || pip install -e '.' -c constraints-termux.txt
-    else
-        pip install -e '.[termux]' || pip install -e '.'
-    fi
-    ln -sf "$PWD/venv/bin/hermes" "${PREFIX:-/data/data/com.termux/files/usr}/bin/hermes"
-    deactivate
-    echo -e "${GREEN}✅ Hermes Agent instalado!${NC}"
-    echo ""
-    echo -e "${CYAN}╔══════════════════ COMANDOS ══════════════════╗${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes${NC}               → Iniciar sessao            ${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes setup${NC}         → Assistente de configuracao${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes model${NC}         → Escolher provider/modelo  ${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes gateway${NC}       → Iniciar gateway mensagens ${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes doctor${NC}        → Diagnosticar problemas    ${CYAN}║${NC}"
-    echo -e "${CYAN}║${NC} ${GREEN}hermes update${NC}        → Atualizar Hermes          ${CYAN}║${NC}"
-    echo -e "${CYAN}╚══════════════════════════════════════════════╝${NC}"
-    log "Hermes Agent instalado"
     sleep 2
 }
 
