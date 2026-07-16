@@ -1,283 +1,343 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 <title>Clube do Termux</title>
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
 <style>
-
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
-
-body{
-min-height:100vh;
-background:linear-gradient(135deg,#000,#001b0b,#00ff66);
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
+body {
+min-height: 100vh;
+font-family: 'Inter', sans-serif;
+background: #0a0a0f;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+overflow-x: hidden;
+position: relative;
 }
 
-
-.container{
-width:90%;
-max-width:420px;
-text-align:center;
+/* Background animated gradient */
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 255, 102, 0.12) 0%, transparent 70%),
+radial-gradient(ellipse 60% 50% at 80% 90%, rgba(0, 255, 102, 0.06) 0%, transparent 60%),
+radial-gradient(ellipse 50% 40% at 10% 80%, rgba(0, 200, 80, 0.05) 0%, transparent 50%);
+pointer-events: none;
+z-index: 0;
 }
 
-
-.logo{
-width:120px;
-height:120px;
-margin:auto;
-border-radius:50%;
-background:#000;
-border:3px solid #00ff66;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:50px;
-color:#00ff66;
-box-shadow:0 0 25px #00ff66;
+/* Grid overlay */
+body::after {
+content: '';
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
+background-size: 40px 40px;
+pointer-events: none;
+z-index: 0;
 }
 
-
-h1{
-margin-top:20px;
-font-size:32px;
+.container {
+position: relative;
+z-index: 1;
+width: 90%;
+max-width: 420px;
+text-align: center;
+padding: 20px 0;
 }
 
-
-p{
-margin:10px 0 25px;
-color:#ccc;
+/* Terminal icon with glow */
+.logo {
+width: 110px;
+height: 110px;
+margin: 0 auto 24px;
+border-radius: 50%;
+background: linear-gradient(135deg, #0d0d14, #1a1a2e);
+border: 2px solid rgba(0, 255, 102, 0.4);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 44px;
+color: #00ff66;
+position: relative;
+transition: all 0.4s ease;
 }
 
-
-.link{
-
-
-display:flex;
-align-items:center;
-gap:15px;
-
-
-background:#111;
-color:white;
-
-
-text-decoration:none;
-
-
-padding:16px;
-margin:14px 0;
-
-
-border-radius:15px;
-
-
-border:1px solid #00ff66;
-
-
-font-size:18px;
-
-
-transition:.3s;
-
-
+.logo::before {
+content: '';
+position: absolute;
+inset: -4px;
+border-radius: 50%;
+background: conic-gradient(from 0deg, transparent, rgba(0, 255, 102, 0.3), transparent, rgba(0, 255, 102, 0.3), transparent);
+-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+animation: spin 4s linear infinite;
 }
 
-
-
-
-.link i{
-
-
-font-size:28px;
-width:35px;
-
-
+@keyframes spin {
+to { transform: rotate(360deg); }
 }
 
-
-
-
-.link:hover{
-
-
-background:#00ff66;
-color:#000;
-transform:scale(1.05);
-
-
+.logo i {
+position: relative;
+z-index: 1;
+filter: drop-shadow(0 0 12px rgba(0, 255, 102, 0.5));
 }
 
-
-
-
-footer{
-
-
-margin-top:25px;
-font-size:13px;
-color:#aaa;
-
-
+h1 {
+font-size: 28px;
+font-weight: 800;
+letter-spacing: -0.5px;
+background: linear-gradient(135deg, #fff 30%, #00ff66);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
 }
 
+.subtitle {
+margin: 8px 0 28px;
+font-size: 14px;
+font-weight: 400;
+color: rgba(255, 255, 255, 0.5);
+letter-spacing: 2px;
+text-transform: uppercase;
+}
 
+.links-wrapper {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.link {
+display: flex;
+align-items: center;
+gap: 16px;
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+padding: 16px 20px;
+text-decoration: none;
+color: rgba(255, 255, 255, 0.85);
+font-size: 15px;
+font-weight: 500;
+transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+position: relative;
+overflow: hidden;
+}
+
+.link::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(0, 255, 102, 0.08), transparent);
+opacity: 0;
+transition: opacity 0.35s ease;
+}
+
+.link i {
+font-size: 22px;
+width: 28px;
+text-align: center;
+transition: transform 0.35s ease;
+}
+
+.link span {
+flex: 1;
+text-align: left;
+}
+
+.link .arrow {
+font-size: 14px;
+color: rgba(255, 255, 255, 0.3);
+transition: transform 0.35s ease;
+}
+
+.link:hover {
+background: rgba(0, 255, 102, 0.08);
+border-color: rgba(0, 255, 102, 0.3);
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(0, 255, 102, 0.1);
+color: #fff;
+}
+
+.link:hover::before {
+opacity: 1;
+}
+
+.link:hover i {
+transform: scale(1.1);
+}
+
+.link:hover .arrow {
+transform: translateX(4px);
+color: #00ff66;
+}
+
+/* Glow line effect on hover */
+.link::after {
+content: '';
+position: absolute;
+left: 50%;
+bottom: 0;
+width: 0;
+height: 2px;
+background: #00ff66;
+transition: all 0.35s ease;
+transform: translateX(-50%);
+border-radius: 2px;
+box-shadow: 0 0 12px #00ff66;
+}
+
+.link:hover::after {
+width: 60%;
+}
+
+footer {
+margin-top: 32px;
+font-size: 13px;
+color: rgba(255, 255, 255, 0.25);
+letter-spacing: 0.5px;
+}
+
+footer .heart {
+color: #00ff66;
+display: inline-block;
+animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.2); }
+}
+
+/* Floating particles */
+.particles {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 0;
+overflow: hidden;
+}
+
+.particle {
+position: absolute;
+width: 2px;
+height: 2px;
+background: #00ff66;
+border-radius: 50%;
+opacity: 0;
+animation: float 8s infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 35%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 50%; animation-delay: 0.5s; width: 3px; height: 3px; }
+.particle:nth-child(5) { left: 65%; animation-delay: 3s; }
+.particle:nth-child(6) { left: 75%; animation-delay: 1.5s; }
+.particle:nth-child(7) { left: 85%; animation-delay: 2.5s; width: 3px; height: 3px; }
+.particle:nth-child(8) { left: 95%; animation-delay: 0.8s; }
+.particle:nth-child(9) { left: 45%; animation-delay: 3.5s; }
+.particle:nth-child(10) { left: 15%; animation-delay: 4s; width: 4px; height: 4px; }
+
+@keyframes float {
+0% {
+bottom: -10px;
+opacity: 0;
+}
+10% {
+opacity: 1;
+}
+90% {
+opacity: 1;
+}
+100% {
+bottom: 100%;
+opacity: 0;
+}
+}
+
+@media (max-width: 480px) {
+.container { padding: 16px 0; }
+h1 { font-size: 24px; }
+.logo { width: 90px; height: 90px; font-size: 36px; }
+.link { padding: 14px 16px; font-size: 14px; }
+}
 </style>
-
-
 </head>
-
-
-
-
 <body>
 
-
-
+<div class="particles">
+<div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div>
+<div class="particle"></div><div class="particle"></div>
+</div>
 
 <div class="container">
 
-
-
-
 <div class="logo">
-
-
 <i class="fa-solid fa-terminal"></i>
-
-
 </div>
-
-
-
 
 <h1>Clube do Termux</h1>
+<p class="subtitle">Linux · Termux · IA · Programação · Open Source</p>
 
-
-
-
-<p>
-Linux • Termux • IA • Programação • Open Source
-</p>
-
-
-
-
-
-
+<div class="links-wrapper">
 <a class="link" href="https://www.tiktok.com/@clube.do.termux" target="_blank">
-
-
 <i class="fa-brands fa-tiktok"></i>
-
-
-TikTok
-
-
+<span>TikTok</span>
+<i class="fa-solid fa-arrow-right arrow"></i>
 </a>
-
-
-
-
-
 
 <a class="link" href="https://t.me/ClubeDoTermux" target="_blank">
-
-
 <i class="fa-brands fa-telegram"></i>
-
-
-Telegram
-
-
+<span>Telegram</span>
+<i class="fa-solid fa-arrow-right arrow"></i>
 </a>
-
-
-
-
-
 
 <a class="link" href="https://github.com/carlos46743" target="_blank">
-
-
 <i class="fa-brands fa-github"></i>
-
-
-GitHub
-
-
+<span>GitHub</span>
+<i class="fa-solid fa-arrow-right arrow"></i>
 </a>
-
-
-
-
-
 
 <a class="link" href="https://www.instagram.com/clubedotermux" target="_blank">
-
-
 <i class="fa-brands fa-instagram"></i>
-
-
-Instagram
-
-
+<span>Instagram</span>
+<i class="fa-solid fa-arrow-right arrow"></i>
 </a>
-
-
-
-
-
 
 <a class="link" href="https://clubedotermux.blogspot.com" target="_blank">
-
-
 <i class="fa-solid fa-globe"></i>
-
-
-Site Oficial
-
-
+<span>Site Oficial</span>
+<i class="fa-solid fa-arrow-right arrow"></i>
 </a>
-
-
-
-
-
-
-<footer>
-
-
-© 2026 Clube do Termux 🚀
-
-
-</footer>
-
-
-
-
 </div>
 
+<footer>
+Feito com <span class="heart">❤</span> · © 2026 Clube do Termux
+</footer>
 
-
-
+</div>
 </body>
 </html>
