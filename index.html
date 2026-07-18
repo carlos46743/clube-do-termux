@@ -3,341 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clube do Termux</title>
+<title>Clube do Termux — Linux · IA · Programação · Open Source</title>
+<meta name="description" content="Clube do Termux — Aprenda tecnologia pelo celular. Tutoriais de Termux, Linux, IA, Python, Git e muito mais.">
+<meta property="og:title" content="Clube do Termux">
+<meta property="og:description" content="Aprenda tecnologia pelo celular">
+<meta property="og:image" content="https://carlos46743.github.io/clube-do-termux/termux-panel-preview.png">
+<meta property="og:url" content="https://carlos46743.github.io/clube-do-termux">
+<meta name="theme-color" content="#00ff88">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-body {
-min-height: 100vh;
-font-family: 'Inter', sans-serif;
-background: #0a0a0f;
-display: flex;
-justify-content: center;
-align-items: center;
-color: #fff;
-overflow-x: hidden;
-position: relative;
-}
-
-/* Background animated gradient */
-body::before {
-content: '';
-position: fixed;
-inset: 0;
-background:
-radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 255, 102, 0.12) 0%, transparent 70%),
-radial-gradient(ellipse 60% 50% at 80% 90%, rgba(0, 255, 102, 0.06) 0%, transparent 60%),
-radial-gradient(ellipse 50% 40% at 10% 80%, rgba(0, 200, 80, 0.05) 0%, transparent 50%);
-pointer-events: none;
-z-index: 0;
-}
-
-/* Grid overlay */
-body::after {
-content: '';
-position: fixed;
-inset: 0;
-background-image:
-linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
-background-size: 40px 40px;
-pointer-events: none;
-z-index: 0;
-}
-
-.container {
-position: relative;
-z-index: 1;
-width: 90%;
-max-width: 420px;
-text-align: center;
-padding: 20px 0;
-}
-
-/* Terminal icon with glow */
-.logo {
-width: 110px;
-height: 110px;
-margin: 0 auto 24px;
-border-radius: 50%;
-background: linear-gradient(135deg, #0d0d14, #1a1a2e);
-border: 2px solid rgba(0, 255, 102, 0.4);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 44px;
-color: #00ff66;
-position: relative;
-transition: all 0.4s ease;
-}
-
-.logo::before {
-content: '';
-position: absolute;
-inset: -4px;
-border-radius: 50%;
-background: conic-gradient(from 0deg, transparent, rgba(0, 255, 102, 0.3), transparent, rgba(0, 255, 102, 0.3), transparent);
--webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
-animation: spin 4s linear infinite;
-}
-
-@keyframes spin {
-to { transform: rotate(360deg); }
-}
-
-.logo i {
-position: relative;
-z-index: 1;
-filter: drop-shadow(0 0 12px rgba(0, 255, 102, 0.5));
-}
-
-h1 {
-font-size: 28px;
-font-weight: 800;
-letter-spacing: -0.5px;
-background: linear-gradient(135deg, #fff 30%, #00ff66);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-
-.subtitle {
-margin: 8px 0 28px;
-font-size: 14px;
-font-weight: 400;
-color: rgba(255, 255, 255, 0.5);
-letter-spacing: 2px;
-text-transform: uppercase;
-}
-
-.links-wrapper {
-display: flex;
-flex-direction: column;
-gap: 12px;
-}
-
-.link {
-display: flex;
-align-items: center;
-gap: 16px;
-background: rgba(255, 255, 255, 0.03);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-border: 1px solid rgba(255, 255, 255, 0.06);
-border-radius: 16px;
-padding: 16px 20px;
-text-decoration: none;
-color: rgba(255, 255, 255, 0.85);
-font-size: 15px;
-font-weight: 500;
-transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-position: relative;
-overflow: hidden;
-}
-
-.link::before {
-content: '';
-position: absolute;
-inset: 0;
-background: linear-gradient(135deg, rgba(0, 255, 102, 0.08), transparent);
-opacity: 0;
-transition: opacity 0.35s ease;
-}
-
-.link i {
-font-size: 22px;
-width: 28px;
-text-align: center;
-transition: transform 0.35s ease;
-}
-
-.link span {
-flex: 1;
-text-align: left;
-}
-
-.link .arrow {
-font-size: 14px;
-color: rgba(255, 255, 255, 0.3);
-transition: transform 0.35s ease;
-}
-
-.link:hover {
-background: rgba(0, 255, 102, 0.08);
-border-color: rgba(0, 255, 102, 0.3);
-transform: translateY(-2px);
-box-shadow: 0 8px 30px rgba(0, 255, 102, 0.1);
-color: #fff;
-}
-
-.link:hover::before {
-opacity: 1;
-}
-
-.link:hover i {
-transform: scale(1.1);
-}
-
-.link:hover .arrow {
-transform: translateX(4px);
-color: #00ff66;
-}
-
-/* Glow line effect on hover */
-.link::after {
-content: '';
-position: absolute;
-left: 50%;
-bottom: 0;
-width: 0;
-height: 2px;
-background: #00ff66;
-transition: all 0.35s ease;
-transform: translateX(-50%);
-border-radius: 2px;
-box-shadow: 0 0 12px #00ff66;
-}
-
-.link:hover::after {
-width: 60%;
-}
-
-footer {
-margin-top: 32px;
-font-size: 13px;
-color: rgba(255, 255, 255, 0.25);
-letter-spacing: 0.5px;
-}
-
-footer .heart {
-color: #00ff66;
-display: inline-block;
-animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.2); }
-}
-
-/* Floating particles */
-.particles {
-position: fixed;
-inset: 0;
-pointer-events: none;
-z-index: 0;
-overflow: hidden;
-}
-
-.particle {
-position: absolute;
-width: 2px;
-height: 2px;
-background: #00ff66;
-border-radius: 50%;
-opacity: 0;
-animation: float 8s infinite;
-}
-
-.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-.particle:nth-child(2) { left: 20%; animation-delay: 1s; width: 3px; height: 3px; }
-.particle:nth-child(3) { left: 35%; animation-delay: 2s; }
-.particle:nth-child(4) { left: 50%; animation-delay: 0.5s; width: 3px; height: 3px; }
-.particle:nth-child(5) { left: 65%; animation-delay: 3s; }
-.particle:nth-child(6) { left: 75%; animation-delay: 1.5s; }
-.particle:nth-child(7) { left: 85%; animation-delay: 2.5s; width: 3px; height: 3px; }
-.particle:nth-child(8) { left: 95%; animation-delay: 0.8s; }
-.particle:nth-child(9) { left: 45%; animation-delay: 3.5s; }
-.particle:nth-child(10) { left: 15%; animation-delay: 4s; width: 4px; height: 4px; }
-
-@keyframes float {
-0% {
-bottom: -10px;
-opacity: 0;
-}
-10% {
-opacity: 1;
-}
-90% {
-opacity: 1;
-}
-100% {
-bottom: 100%;
-opacity: 0;
-}
-}
-
-@media (max-width: 480px) {
-.container { padding: 16px 0; }
-h1 { font-size: 24px; }
-.logo { width: 90px; height: 90px; font-size: 36px; }
-.link { padding: 14px 16px; font-size: 14px; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
 </head>
 <body>
 
-<div class="particles">
-<div class="particle"></div><div class="particle"></div>
-<div class="particle"></div><div class="particle"></div>
-<div class="particle"></div><div class="particle"></div>
-<div class="particle"></div><div class="particle"></div>
-<div class="particle"></div><div class="particle"></div>
-</div>
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="logo">
+      <svg class="logo__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      Clube do Termux
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <ul class="nav__list">
+        <li><a href="#aprenda" class="nav__link">Aprenda</a></li>
+        <li><a href="#tutoriais" class="nav__link">Tutoriais</a></li>
+        <li><a href="#painel" class="nav__link">Painel</a></li>
+        <li><a href="#comunidade" class="nav__link">Comunidade</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-<div class="container">
+<!-- Hero -->
+<section class="hero" id="aprenda">
+  <div class="hero__inner">
+    <div class="hero__logo">
+      <svg class="hero__logo-icon" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+    </div>
+    <h1 class="hero__title">Clube do Termux</h1>
+    <p class="hero__subtitle">
+      Aprenda Linux, programação, IA e administração de sistemas<br>
+      direto do seu celular ou computador. Código aberto e gratuito.
+    </p>
+    <div class="hero__buttons">
+      <a href="#painel" class="btn btn--primary btn--large">
+        <i class="fa-solid fa-terminal"></i> Instalar Painel
+      </a>
+      <a href="https://github.com/carlos46743/clube-do-termux" target="_blank" class="btn btn--outline btn--large">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+  </div>
+</section>
 
-<div class="logo">
-<i class="fa-solid fa-terminal"></i>
-</div>
+<!-- Terminal animado -->
+<section class="terminal-section reveal" id="painel">
+  <div class="container">
+    <h2 class="section__title">Painel Interativo</h2>
+    <p class="section__desc">Instalação automatizada com um comando</p>
+    <div class="terminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot terminal__dot--red"></span>
+        <span class="terminal__dot terminal__dot--yellow"></span>
+        <span class="terminal__dot terminal__dot--green"></span>
+        <span class="terminal__title">termux-panel.sh</span>
+      </div>
+      <div class="terminal__body" id="terminalBody">
+        <div class="terminal__line">
+          <span class="terminal__prompt">$</span>
+          <span>curl -fsSL https://raw.githubusercontent.com/carlos46743/clube-do-termux/master/termux-panel.sh | bash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h1>Clube do Termux</h1>
-<p class="subtitle">Linux · Termux · IA · Programação · Open Source</p>
+<!-- Skills Grid -->
+<section class="section section--dark reveal">
+  <div class="container">
+    <h2 class="section__title">O que você vai aprender</h2>
+    <p class="section__desc">Ferramentas e tecnologias do ecossistema Termux &amp; Linux</p>
+    <div class="grid" id="skillsGrid"></div>
+  </div>
+</section>
 
-<div class="links-wrapper">
-<a class="link" href="https://www.tiktok.com/@clube.do.termux" target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-<span>TikTok</span>
-<i class="fa-solid fa-arrow-right arrow"></i>
-</a>
+<!-- Tutoriais -->
+<section class="section reveal" id="tutoriais">
+  <div class="container">
+    <h2 class="section__title">Tutoriais em Destaque</h2>
+    <p class="section__desc">Passo a passo para você começar</p>
+    <div class="tutorials" id="tutorialsGrid"></div>
+  </div>
+</section>
 
-<a class="link" href="https://t.me/ClubeDoTermux" target="_blank">
-<i class="fa-brands fa-telegram"></i>
-<span>Telegram</span>
-<i class="fa-solid fa-arrow-right arrow"></i>
-</a>
+<!-- Estatísticas -->
+<section class="stats reveal">
+  <div class="container">
+    <div class="stats__grid">
+      <div class="stat">
+        <span class="stat__number" data-target="20">0</span>
+        <span class="stat__suffix">+</span>
+        <span class="stat__label">Ferramentas</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number" data-target="25">0</span>
+        <span class="stat__suffix">+</span>
+        <span class="stat__label">Opções no Painel</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number" data-target="2">0</span>
+        <span class="stat__suffix">em 1</span>
+        <span class="stat__label">Plataformas</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number" data-target="100">0</span>
+        <span class="stat__suffix">%</span>
+        <span class="stat__label">Open Source</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<a class="link" href="https://github.com/carlos46743" target="_blank">
-<i class="fa-brands fa-github"></i>
-<span>GitHub</span>
-<i class="fa-solid fa-arrow-right arrow"></i>
-</a>
+<!-- Benefícios -->
+<section class="section section--dark reveal">
+  <div class="container">
+    <h2 class="section__title">Por que participar?</h2>
+    <p class="section__desc">Conteúdo feito para quem está começando</p>
+    <div class="benefits" id="benefitsGrid"></div>
+  </div>
+</section>
 
-<a class="link" href="https://www.instagram.com/clubedotermux" target="_blank">
-<i class="fa-brands fa-instagram"></i>
-<span>Instagram</span>
-<i class="fa-solid fa-arrow-right arrow"></i>
-</a>
+<!-- CTA -->
+<section class="cta reveal" id="comunidade">
+  <div class="cta__inner container">
+    <h2 class="cta__title">Comece agora</h2>
+    <p class="cta__text">Instale o painel com um comando e explore todas as funcionalidades.</p>
+    <div class="hero__buttons" style="justify-content:center">
+      <a href="https://raw.githubusercontent.com/carlos46743/clube-do-termux/master/termux-panel.sh" target="_blank" class="btn btn--primary btn--large">
+        <i class="fa-solid fa-download"></i> Baixar Painel
+      </a>
+      <a href="https://t.me/ClubeDoTermux" target="_blank" class="btn btn--secondary btn--large">
+        <i class="fa-brands fa-telegram"></i> Telegram
+      </a>
+      <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="btn btn--outline btn--large">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+    </div>
+    <div style="margin-top:20px">
+      <code style="background:#161b22;padding:12px 20px;border-radius:8px;display:inline-block;border:1px solid #30363d;font-size:0.85rem;color:#00ff88">
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/carlos46743/clube-do-termux/master/termux-panel.sh)"
+      </code>
+    </div>
+  </div>
+</section>
 
-<a class="link" href="https://clubedotermux.blogspot.com" target="_blank">
-<i class="fa-solid fa-globe"></i>
-<span>Site Oficial</span>
-<i class="fa-solid fa-arrow-right arrow"></i>
-</a>
-</div>
-
-<footer>
-Feito com <span class="heart">❤</span> · © 2026 Clube do Termux
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <div class="footer__copy">Clube do Termux &copy; 2026 &mdash; MIT License</div>
+      <div class="footer__copy">Feito com <span style="color:#00ff66">&#9829;</span> pela comunidade</div>
+    </div>
+    <div class="footer__social">
+      <a href="https://github.com/carlos46743" target="_blank" class="social-link" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="https://t.me/ClubeDoTermux" target="_blank" class="social-link" aria-label="Telegram">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="social-link" aria-label="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="https://www.instagram.com/clubedotermux" target="_blank" class="social-link" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://clubedotermux.blogspot.com" target="_blank" class="social-link" aria-label="Blog">
+        <i class="fa-solid fa-globe"></i>
+      </a>
+    </div>
+  </div>
 </footer>
 
-</div>
+<script src="script.js"></script>
 </body>
 </html>
