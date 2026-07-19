@@ -1,31 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const typingEl = document.getElementById('typing');
-  const cursorEl = document.getElementById('cursor');
-  const text = './redes-sociais.sh --connect';
-
-  if (typingEl) {
-    let i = 0;
-    function type() {
-      if (i < text.length) {
-        typingEl.textContent += text[i];
-        i++;
-        setTimeout(type, 35 + Math.random() * 25);
-      }
+  const particlesContainer = document.getElementById('particles');
+  if (particlesContainer) {
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDelay = Math.random() * 6 + 's';
+      p.style.animationDuration = (4 + Math.random() * 4) + 's';
+      p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+      particlesContainer.appendChild(p);
     }
-    setTimeout(type, 600);
   }
-
-  const revealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 400 + i * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealElements.forEach(el => observer.observe(el));
 });

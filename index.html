@@ -1,104 +1,148 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clube do Termux — Redes Sociais</title>
-<meta name="description" content="Clube do Termux — Todas as nossas redes sociais em um só lugar.">
-<meta property="og:title" content="Clube do Termux — Redes Sociais">
-<meta property="og:description" content="Todas as nossas redes sociais em um só lugar">
-<meta property="og:url" content="https://carlos46743.github.io/clube-do-termux">
-<meta name="theme-color" content="#00ff88">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128187;</text></svg>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLUBE DO TERMUX · Redes Sociais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="terminal-window">
-  <div class="terminal-bar">
-    <span class="terminal-dot red"></span>
-    <span class="terminal-dot yellow"></span>
-    <span class="terminal-dot green"></span>
-    <span class="terminal-title">redes-sociais.sh</span>
-  </div>
+<div class="grid-bg"></div>
+<div class="particles" id="particles"></div>
 
-  <div class="terminal-body">
-    <div class="banner">
-      <pre class="banner-art">
-  ┌─┐┬ ┬┌┐ ┌─┐┌┬┐  ┌┬┐┌─┐┌┬┐┬┌─┐┬ ┬
-  │  │ │├┴┐├┤  ││   │││├┤  │ ││ ┬├─┤
-  └─┘└─┘└─┘└─┘─┴┘   ┴ ┴└─┘ ┴ ┴└─┘┴ ┴</pre>
-      <div class="banner-line">
-        <span class="prompt">┌──(</span><span class="prompt-user">clube</span><span class="prompt-at">@</span><span class="prompt-host">termux</span><span class="prompt">)</span><span class="prompt">-[</span><span class="prompt-path">~/redes</span><span class="prompt">]</span>
-      </div>
-      <div class="banner-line">
-        <span class="prompt">└─$</span> <span class="typing" id="typing"></span><span class="cursor" id="cursor">▊</span>
-      </div>
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-badge">
+      <span class="live-dot"></span>
+      <span>REDES SOCIAIS · CONECTE-SE</span>
     </div>
 
-    <div class="links">
-      <a href="https://github.com/carlos46743" target="_blank" class="cmd cmd--github reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-brands fa-github"></i></span>
-        <span class="cmd-name">github</span>
-        <span class="cmd-desc">— Meus projetos open source</span>
-        <span class="cmd-arrow">→</span>
-      </a>
-
-      <a href="https://t.me/ClubeDoTermux" target="_blank" class="cmd cmd--telegram reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-brands fa-telegram"></i></span>
-        <span class="cmd-name">telegram</span>
-        <span class="cmd-desc">— Grupo e canal oficial</span>
-        <span class="cmd-arrow">→</span>
-      </a>
-
-      <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="cmd cmd--tiktok reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-brands fa-tiktok"></i></span>
-        <span class="cmd-name">tiktok</span>
-        <span class="cmd-desc">— Conteúdo de tecnologia</span>
-        <span class="cmd-arrow">→</span>
-      </a>
-
-      <a href="https://www.instagram.com/clubedotermux" target="_blank" class="cmd cmd--instagram reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-brands fa-instagram"></i></span>
-        <span class="cmd-name">instagram</span>
-        <span class="cmd-desc">— Acompanhe nosso dia a dia</span>
-        <span class="cmd-arrow">→</span>
-      </a>
-
-      <a href="https://clubedotermux.blogspot.com" target="_blank" class="cmd cmd--blog reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-solid fa-globe"></i></span>
-        <span class="cmd-name">blog</span>
-        <span class="cmd-desc">— Tutoriais e artigos</span>
-        <span class="cmd-arrow">→</span>
-      </a>
-
-      <a href="mailto:contato@clubedotermux.com" target="_blank" class="cmd cmd--email reveal">
-        <span class="cmd-prompts">$</span>
-        <span class="cmd-icon"><i class="fa-solid fa-envelope"></i></span>
-        <span class="cmd-name">contato</span>
-        <span class="cmd-desc">— Envie um e-mail</span>
-        <span class="cmd-arrow">→</span>
-      </a>
+    <div class="logo-clube">
+      <i class="fas fa-terminal"></i> CLUBE DO TERMUX <i class="fas fa-skull"></i>
     </div>
 
-    <div class="footer">
-      <span class="prompt">┌──(</span><span class="prompt-user">clube</span><span class="prompt-at">@</span><span class="prompt-host">termux</span><span class="prompt">)</span><span class="prompt">-[</span><span class="prompt-path">~</span><span class="prompt">]</span>
-      <div class="footer-line">
-        <span class="prompt">└─$</span> <span class="footer-text">echo "© 2026 Clube do Termux — MIT"</span>
+    <h1>🌐 NOSSAS REDES</h1>
+    <p>Acompanhe o Clube do Termux em todas as plataformas — tutoriais, projetos, comunidade e muito mais</p>
+
+    <div class="hero-stats">
+      <div class="stat"><span class="num">6</span><span class="lbl">Plataformas</span></div>
+      <div class="stat"><span class="num">250+</span><span class="lbl">Tutoriais</span></div>
+      <div class="stat"><span class="num">10+</span><span class="lbl">Repositórios</span></div>
+    </div>
+  </header>
+
+  <section class="social-grid">
+    <a href="https://github.com/carlos46743" target="_blank" class="social-card" style="--accent: #6e5494">
+      <div class="social-card-icon"><i class="fab fa-github"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">GitHub</span>
+        <span class="social-card-desc">Meus projetos open source</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> github.com/carlos46743</span>
       </div>
-      <div class="footer-line footer-line--out">
-        <span class="prompt-out">©</span> 2026 Clube do Termux — MIT
+    </a>
+
+    <a href="https://t.me/ClubeDoTermux" target="_blank" class="social-card" style="--accent: #0088cc">
+      <div class="social-card-icon"><i class="fab fa-telegram"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">Telegram</span>
+        <span class="social-card-desc">Grupo e canal oficial</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> t.me/ClubeDoTermux</span>
+      </div>
+    </a>
+
+    <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="social-card" style="--accent: #ffffff">
+      <div class="social-card-icon"><i class="fab fa-tiktok"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">TikTok</span>
+        <span class="social-card-desc">Conteúdo de tecnologia</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> @clube.do.termux</span>
+      </div>
+    </a>
+
+    <a href="https://www.instagram.com/clubedotermux" target="_blank" class="social-card" style="--accent: #e1306c">
+      <div class="social-card-icon"><i class="fab fa-instagram"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">Instagram</span>
+        <span class="social-card-desc">Acompanhe o dia a dia</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> @clubedotermux</span>
+      </div>
+    </a>
+
+    <a href="https://clubedotermux.blogspot.com" target="_blank" class="social-card" style="--accent: #00ffc8">
+      <div class="social-card-icon"><i class="fas fa-globe"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">Blog</span>
+        <span class="social-card-desc">Tutoriais e artigos</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> clubedotermux.blogspot.com</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/carlos46743/clube-do-termux" target="_blank" class="social-card" style="--accent: #ffd700">
+      <div class="social-card-icon"><i class="fas fa-terminal"></i></div>
+      <div class="social-card-content">
+        <span class="social-card-title">Clube do Termux</span>
+        <span class="social-card-desc">Repositório oficial</span>
+        <span class="social-card-command"><i class="fas fa-chevron-right"></i> github.com/carlos46743/clube-do-termux</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="repo-section-banner">
+    <h3><i class="fas fa-code-branch"></i> REPOSITÓRIOS OFICIAIS</h3>
+    <p>Conheça todos os projetos da comunidade</p>
+    <div class="repo-links">
+      <a href="https://github.com/carlos46743/termux-prompt-installer" target="_blank"><i class="fas fa-paint-brush"></i> Prompt Installer</a>
+      <a href="https://github.com/carlos46743/mini-llm-termux" target="_blank"><i class="fas fa-brain"></i> Mini LLM</a>
+      <a href="https://github.com/carlos46743/cybertrace-panel" target="_blank"><i class="fas fa-search"></i> CyberTrace Panel</a>
+      <a href="https://github.com/carlos46743/ALHacking" target="_blank"><i class="fas fa-skull"></i> ALHacking</a>
+      <a href="https://github.com/carlos46743/Banner-Termux-" target="_blank"><i class="fas fa-image"></i> Banner Termux</a>
+      <a href="https://github.com/carlos46743/clube-do-termux" target="_blank"><i class="fab fa-github"></i> Clube do Termux</a>
+    </div>
+  </section>
+
+  <section class="terminal-preview">
+    <div class="category-header">
+      <div class="icon"><i class="fas fa-terminal"></i></div>
+      <h2>$ ./conectar.sh</h2>
+      <span class="count">COMANDO RÁPIDO</span>
+    </div>
+    <div class="terminal-box">
+      <div class="terminal-box-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span>redes-sociais.sh</span>
+      </div>
+      <div class="terminal-box-body">
+        <div class="terminal-line"><span class="prompt-symbol">$</span> ./redes-sociais.sh --todas</div>
+        <div class="terminal-line output">Conectando ao GitHub...   <span class="output-green">✓</span></div>
+        <div class="terminal-line output">Conectando ao Telegram... <span class="output-green">✓</span></div>
+        <div class="terminal-line output">Conectando ao TikTok...   <span class="output-green">✓</span></div>
+        <div class="terminal-line output">Conectando ao Instagram.. <span class="output-green">✓</span></div>
+        <div class="terminal-line output">Conectando ao Blog...     <span class="output-green">✓</span></div>
+        <div class="terminal-line output" style="color: var(--gold);">Todas as redes conectadas com sucesso!</div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <footer class="footer">
+    <div class="social-links">
+      <a href="https://github.com/carlos46743" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://github.com/carlos46743/clube-do-termux" target="_blank" title="Clube do Termux"><i class="fas fa-terminal"></i></a>
+      <a href="https://t.me/ClubeDoTermux" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.instagram.com/clubedotermux" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://clubedotermux.blogspot.com" target="_blank" title="Blog"><i class="fas fa-globe"></i></a>
+    </div>
+    <p><span class="highlight">CLUBE DO TERMUX</span> · COMPILADO COM 💚 PELA COMUNIDADE</p>
+    <p style="margin-top:0.3rem">Aprenda tecnologia pelo celular · github.com/carlos46743</p>
+  </footer>
 </div>
 
 <script src="script.js"></script>
