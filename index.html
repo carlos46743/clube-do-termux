@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>carlos46743 — Redes Sociais</title>
-<meta name="description" content="Todas as minhas redes sociais em um só lugar. Conecte-se comigo!">
-<meta property="og:title" content="carlos46743 — Redes Sociais">
-<meta property="og:description" content="Todas as minhas redes sociais em um só lugar">
+<title>Clube do Termux — Redes Sociais</title>
+<meta name="description" content="Clube do Termux — Todas as nossas redes sociais em um só lugar.">
+<meta property="og:title" content="Clube do Termux — Redes Sociais">
+<meta property="og:description" content="Todas as nossas redes sociais em um só lugar">
 <meta property="og:url" content="https://carlos46743.github.io/clube-do-termux">
 <meta name="theme-color" content="#00ff88">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,79 +17,88 @@
 </head>
 <body>
 
-<div class="container">
-  <section class="profile">
-    <div class="profile__avatar">
-      <img src="https://github.com/carlos46743.png" alt="carlos46743" class="profile__avatar-img">
-      <div class="profile__avatar-ring"></div>
+<div class="terminal-window">
+  <div class="terminal-bar">
+    <span class="terminal-dot red"></span>
+    <span class="terminal-dot yellow"></span>
+    <span class="terminal-dot green"></span>
+    <span class="terminal-title">redes-sociais.sh</span>
+  </div>
+
+  <div class="terminal-body">
+    <div class="banner">
+      <pre class="banner-art">
+  ┌─┐┬ ┬┌┐ ┌─┐┌┬┐  ┌┬┐┌─┐┌┬┐┬┌─┐┬ ┬
+  │  │ │├┴┐├┤  ││   │││├┤  │ ││ ┬├─┤
+  └─┘└─┘└─┘└─┘─┴┘   ┴ ┴└─┘ ┴ ┴└─┘┴ ┴</pre>
+      <div class="banner-line">
+        <span class="prompt">┌──(</span><span class="prompt-user">clube</span><span class="prompt-at">@</span><span class="prompt-host">termux</span><span class="prompt">)</span><span class="prompt">-[</span><span class="prompt-path">~/redes</span><span class="prompt">]</span>
+      </div>
+      <div class="banner-line">
+        <span class="prompt">└─$</span> <span class="typing" id="typing"></span><span class="cursor" id="cursor">▊</span>
+      </div>
     </div>
-    <h1 class="profile__name">carlos46743</h1>
-    <p class="profile__bio">
-      Tecnologia, código aberto e aprendizado contínuo.<br>
-      Conecte-se comigo nas redes abaixo.
-    </p>
-  </section>
 
-  <section class="links" id="links">
-    <a href="https://github.com/carlos46743" target="_blank" class="link-card link-card--github reveal">
-      <div class="link-card__icon"><i class="fa-brands fa-github"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">GitHub</span>
-        <span class="link-card__desc">Meus projetos open source</span>
+    <div class="links">
+      <a href="https://github.com/carlos46743" target="_blank" class="cmd cmd--github reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-brands fa-github"></i></span>
+        <span class="cmd-name">github</span>
+        <span class="cmd-desc">— Meus projetos open source</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+
+      <a href="https://t.me/ClubeDoTermux" target="_blank" class="cmd cmd--telegram reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-brands fa-telegram"></i></span>
+        <span class="cmd-name">telegram</span>
+        <span class="cmd-desc">— Grupo e canal oficial</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="cmd cmd--tiktok reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-brands fa-tiktok"></i></span>
+        <span class="cmd-name">tiktok</span>
+        <span class="cmd-desc">— Conteúdo de tecnologia</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+
+      <a href="https://www.instagram.com/clubedotermux" target="_blank" class="cmd cmd--instagram reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-brands fa-instagram"></i></span>
+        <span class="cmd-name">instagram</span>
+        <span class="cmd-desc">— Acompanhe nosso dia a dia</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+
+      <a href="https://clubedotermux.blogspot.com" target="_blank" class="cmd cmd--blog reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-solid fa-globe"></i></span>
+        <span class="cmd-name">blog</span>
+        <span class="cmd-desc">— Tutoriais e artigos</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+
+      <a href="mailto:contato@clubedotermux.com" target="_blank" class="cmd cmd--email reveal">
+        <span class="cmd-prompts">$</span>
+        <span class="cmd-icon"><i class="fa-solid fa-envelope"></i></span>
+        <span class="cmd-name">contato</span>
+        <span class="cmd-desc">— Envie um e-mail</span>
+        <span class="cmd-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="footer">
+      <span class="prompt">┌──(</span><span class="prompt-user">clube</span><span class="prompt-at">@</span><span class="prompt-host">termux</span><span class="prompt">)</span><span class="prompt">-[</span><span class="prompt-path">~</span><span class="prompt">]</span>
+      <div class="footer-line">
+        <span class="prompt">└─$</span> <span class="footer-text">echo "© 2026 Clube do Termux — MIT"</span>
       </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-
-    <a href="https://t.me/ClubeDoTermux" target="_blank" class="link-card link-card--telegram reveal">
-      <div class="link-card__icon"><i class="fa-brands fa-telegram"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">Telegram</span>
-        <span class="link-card__desc">Grupo e canal oficial</span>
+      <div class="footer-line footer-line--out">
+        <span class="prompt-out">©</span> 2026 Clube do Termux — MIT
       </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-
-    <a href="https://www.tiktok.com/@clube.do.termux" target="_blank" class="link-card link-card--tiktok reveal">
-      <div class="link-card__icon"><i class="fa-brands fa-tiktok"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">TikTok</span>
-        <span class="link-card__desc">Conteúdo de tecnologia</span>
-      </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-
-    <a href="https://www.instagram.com/clubedotermux" target="_blank" class="link-card link-card--instagram reveal">
-      <div class="link-card__icon"><i class="fa-brands fa-instagram"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">Instagram</span>
-        <span class="link-card__desc">Acompanhe o dia a dia</span>
-      </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-
-    <a href="https://clubedotermux.blogspot.com" target="_blank" class="link-card link-card--blog reveal">
-      <div class="link-card__icon"><i class="fa-solid fa-globe"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">Blog</span>
-        <span class="link-card__desc">Tutoriais e artigos</span>
-      </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-
-    <a href="https://github.com/carlos46743/clube-do-termux" target="_blank" class="link-card link-card--clube reveal">
-      <div class="link-card__icon"><i class="fa-solid fa-terminal"></i></div>
-      <div class="link-card__content">
-        <span class="link-card__title">Clube do Termux</span>
-        <span class="link-card__desc">Painel multifunções</span>
-      </div>
-      <div class="link-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-    </a>
-  </section>
-
-  <footer class="footer">
-    <div class="footer__copy">carlos46743 &copy; 2026</div>
-    <div class="footer__copy">Feito com <span style="color:#00ff66">&hearts;</span></div>
-  </footer>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
